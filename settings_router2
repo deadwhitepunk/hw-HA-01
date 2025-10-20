@@ -1,0 +1,40 @@
+
+Router2(config)#int gigabitEthernet 0/1
+Router2(config-if)#standby 1 trac
+Router2(config-if)#standby 1 track gig
+Router2(config-if)#standby 1 track gigabitEthernet 0/0
+Router2(config-if)#standby 1 pri
+Router2(config-if)#standby 1 preem
+Router2(config-if)#standby 1 preempt 
+Router2(config-if)#end
+
+Router2#sh standby
+GigabitEthernet0/0 - Group 0 (version 2)
+  State is Standby
+    41 state changes, last state change 00:42:36
+  Virtual IP address is 192.168.0.1
+  Active virtual MAC address is 0000.0C9F.F000
+    Local virtual MAC address is 0000.0C9F.F000 (v2 default)
+  Hello time 3 sec, hold time 10 sec
+    Next hello sent in 0.983 secs
+  Preemption enabled
+  Active router is 192.168.0.2, priority 105 (expires in 9 sec)
+    MAC address is 0000.0C9F.F000
+  Standby router is local
+  Priority 100 (default 100)
+    Track interface GigabitEthernet0/1 state Up decrement 10
+  Group name is hsrp-Gig0/0-0 (default)
+GigabitEthernet0/1 - Group 1 (version 2)
+  State is Active
+    13 state changes, last state change 00:42:14
+  Virtual IP address is 192.168.1.1
+  Active virtual MAC address is 0000.0C9F.F001
+    Local virtual MAC address is 0000.0C9F.F001 (v2 default)
+  Hello time 3 sec, hold time 10 sec
+    Next hello sent in 0.56 secs
+  Preemption enabled
+  Active router is local
+  Standby router is 192.168.1.2, priority 50 (expires in 8 sec)
+  Priority 100 (default 100)
+    Track interface GigabitEthernet0/0 state Up decrement 10
+  Group name is hsrp-Gig0/1-1 (default)
