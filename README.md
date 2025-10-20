@@ -12,12 +12,12 @@
 - Для проверки корректности настройки, разорвите один из кабелей между одним из маршрутизаторов и Switch0 и запустите ping между PC0 и Server0.
 - На проверку отправьте получившуюся схему в формате pkt и скриншот, где виден процесс настройки маршрутизатора.
 
-[`Настройки роутера1`](https://github.com/deadwhitepunk/hw-HA-01/settings_router1)
-[`Настройки роутера2`](https://github.com/deadwhitepunk/hw-HA-01/settings_router2)
-[`PKT схема`](https://github.com/deadwhitepunk/hw-HA-01/hsrp_advanced.pkt)
+[`Настройки роутера1`](https://github.com/deadwhitepunk/hw-HA-01/blob/main/settings_router1)
+[`Настройки роутера2`](https://github.com/deadwhitepunk/hw-HA-01/blob/main/settings_router2)
+[`PKT схема`](https://github.com/deadwhitepunk/hw-HA-01/blob/main/hsrp_advanced.pkt)
 
 ![Отключение первого кабеля](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_RSHP_broke_cable.png)`
-![Отключение второго кабеля](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_broke_cable2.png)`
+![Отключение второго кабеля](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_broke_cable.png)`
 ![Скрин рабочего окружения](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_scr_cisco.png)`
 
 ------
