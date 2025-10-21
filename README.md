@@ -58,7 +58,7 @@
 
 Floating IP теперь у backup
 
-![IP after floating](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_after_float.png)
+![IP after floating](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_after_floating.png)
 ------
 
 ## Дополнительные задания со звёздочкой*
