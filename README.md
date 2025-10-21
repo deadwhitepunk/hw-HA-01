@@ -18,11 +18,11 @@
 
 [`PKT схема`](https://github.com/deadwhitepunk/hw-HA-01/blob/main/hsrp_advanced.pkt)
 
-![Отключение первого кабеля](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_RSHP_broke_cable.png)`
+![Отключение первого кабеля](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_RSHP_broke_cable.png)
 
-![Отключение второго кабеля](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_broke_cable2.png)`
+![Отключение второго кабеля](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_broke_cable2.png)
 
-![Скрин рабочего окружения](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_scr_cisco.png)`
+![Скрин рабочего окружения](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_scr_cisco.png)
 
 ------
 
@@ -34,7 +34,31 @@
 - Настройте Keepalived так, чтобы он запускал данный скрипт каждые 3 секунды и переносил виртуальный IP на другой сервер, если bash-скрипт завершался с кодом, отличным от нуля (то есть порт веб-сервера был недоступен или отсутствовал index.html). Используйте для этого секцию vrrp_script
 - На проверку отправьте получившейся bash-скрипт и конфигурационный файл keepalived, а также скриншот с демонстрацией переезда плавающего ip на другой сервер в случае недоступности порта или файла index.html
 
+[`Конфиг файл host1 (ansible1) master`](https://github.com/deadwhitepunk/hw-HA-01/blob/main/keepalived_master.conf)
 
+[`Конфиг файл host2 (ansible2) backup`](https://github.com/deadwhitepunk/hw-HA-01/blob/main/keepalived_master.conf)
+
+Видим что IP адресс находится на мастере
+
+![IP before floating](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_before_float.png)
+
+[`Скрипт проверки доступности порта и наличия файла index.html`](https://github.com/deadwhitepunk/hw-HA-01/blob/main/vrrp_script.sh)
+
+Переименовываем index файл
+
+![Rename index-file](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_rename_index.png)
+
+Логи keepalived
+
+![Keeplived logs](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_float_after_rename_index.png)
+
+Доступность nginx по общему IP
+
+![Keeplived logs](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_nginx_after_rename_index.png)
+
+Floating IP теперь у backup
+
+![IP after floating](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_after_float.png)
 ------
 
 ## Дополнительные задания со звёздочкой*
