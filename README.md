@@ -36,7 +36,7 @@
 
 [`Конфиг файл host1 (ansible1) master`](https://github.com/deadwhitepunk/hw-HA-01/blob/main/keepalived_master.conf)
 
-[`Конфиг файл host2 (ansible2) backup`](https://github.com/deadwhitepunk/hw-HA-01/blob/main/keepalived_master.conf)
+[`Конфиг файл host2 (ansible2) backup`](https://github.com/deadwhitepunk/hw-HA-01/blob/main/keepalived_backup_host3.conf)
 
 Видим что IP адресс находится на мастере
 
@@ -73,8 +73,39 @@ Floating IP теперь у backup
 - Попробуйте выполнить настройку keepalived на третьем сервере и скорректировать при необходимости формулу так, чтобы плавающий ip адрес всегда был прикреплен к серверу, имеющему наименьшую нагрузку.
 - На проверку отправьте получившийся bash-скрипт и конфигурационный файл keepalived, а также скриншоты логов keepalived с серверов при разных нагрузках
 
+Скрипт который отправляет "1" если load average больше 1. Его прокидываем на каждый хост.
 
+[`Скрипт проверки нагрузки`](https://github.com/deadwhitepunk/hw-HA-01/blob/main/loadbalancer.sh)
+
+Настраиваем crontab
+
+![Crontab for script](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_crontab.png)
+
+Ниже представлен отредактированный keepalive конфиг для задания 3.
+
+[`Конфиг файл host1 (ansible1) master, для задания 3`](https://github.com/deadwhitepunk/hw-HA-01/blob/main/keepalived_exerc3_master.conf)
+
+Stress master (host1) Priority становится 1, т.к. load average стал больше 1 и состояние перешло в failure.
+
+![Stress](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_stress_master.png)
+
+Master становится host2.
+
+![Новый мастер host2](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_slave_become_a_master.png)
+
+И виртуальный IP переехал
+
+![IP after floating host2](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_float_ip_exc3.png)
+
+Снимаем stress с host1. Host1 становится master обратно
+
+![Chill host1](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_master_become_master_again.png)
+
+Накидываем stress на host1 и host2. Master становится host3
+
+![FULL STRESS](https://github.com/deadwhitepunk/hw-HA-01/blob/main/img/image_stress_2host_master_3host.png)
 ------
+
 
 ### Правила приема работы
 
